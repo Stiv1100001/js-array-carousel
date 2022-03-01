@@ -11,4 +11,56 @@ const text = [
 ];
 
 const mainImg = document.getElementById('main-img');
-const secondaryImgs = document.querySelectorAll('.carousel-img');
+const titleDOM = document.getElementById('title');
+const textDOM = document.getElementById('text');
+const carousel = document.getElementById('carousel');
+
+for (let i = 0; i < items.length; i++) {
+  if (i === 0) {
+    mainImg.src = items[i];
+    titleDOM.innerHTML = title[i];
+    textDOM.innerHTML = text[i];
+  }
+  const newImgCarousel = document.createElement('img');
+  newImgCarousel.src = items[i];
+  newImgCarousel.alt = 'Sample Img';
+  newImgCarousel.classList.add('carousel-img');
+  if (i === 0) newImgCarousel.classList.add('active');
+  carousel.appendChild(newImgCarousel);
+}
+
+let currentIndex = 0;
+
+document.getElementById('arrow-down').addEventListener('click', () => {
+  const imgs = document.querySelectorAll('.carousel-img');
+
+  for (let i = 0; i < imgs.length; i++) {
+    imgs[i].classList.remove('active');
+  }
+
+  currentIndex++;
+
+  if (currentIndex === imgs.length) currentIndex = 0;
+
+  mainImg.src = items[currentIndex];
+  imgs[currentIndex].classList.add('active');
+  titleDOM.innerHTML = title[currentIndex];
+  textDOM.innerHTML = text[currentIndex];
+});
+
+document.getElementById('arrow-up').addEventListener('click', () => {
+  const imgs = document.querySelectorAll('.carousel-img');
+
+  for (let i = 0; i < imgs.length; i++) {
+    imgs[i].classList.remove('active');
+  }
+
+  currentIndex--;
+
+  if (currentIndex < 0) currentIndex = imgs.length - 1;
+
+  mainImg.src = items[currentIndex];
+  imgs[currentIndex].classList.add('active');
+  titleDOM.innerHTML = title[currentIndex];
+  textDOM.innerHTML = text[currentIndex];
+});
