@@ -15,6 +15,9 @@ const titleDOM = document.getElementById('title');
 const textDOM = document.getElementById('text');
 const carousel = document.getElementById('carousel');
 
+let currentIndex = 0;
+
+// Initialize page
 for (let i = 0; i < items.length; i++) {
   if (i === 0) {
     mainImg.src = items[i];
@@ -29,8 +32,7 @@ for (let i = 0; i < items.length; i++) {
   carousel.appendChild(newImgCarousel);
 }
 
-let currentIndex = 0;
-
+/* Listener */
 document.getElementById('arrow-down').addEventListener('click', () => {
   const imgs = document.querySelectorAll('.carousel-img');
 
