@@ -27,8 +27,8 @@ for (let i = 0; i < items.length; i++) {
   const newImgCarousel = document.createElement('img');
   newImgCarousel.src = items[i];
   newImgCarousel.alt = 'Sample Img';
-  newImgCarousel.classList.add('carousel-img');
-  if (i === 0) newImgCarousel.classList.add('active');
+  newImgCarousel.classList.add('carousel-img', 'w-100');
+  if (i === 0) newImgCarousel.classList.add('img-thumbnail');
   carousel.appendChild(newImgCarousel);
 }
 
@@ -37,7 +37,7 @@ document.getElementById('arrow-down').addEventListener('click', () => {
   const imgs = document.querySelectorAll('.carousel-img');
 
   for (let i = 0; i < imgs.length; i++) {
-    imgs[i].classList.remove('active');
+    imgs[i].classList.remove('img-thumbnail');
   }
 
   currentIndex++;
@@ -45,7 +45,7 @@ document.getElementById('arrow-down').addEventListener('click', () => {
   if (currentIndex === imgs.length) currentIndex = 0;
 
   mainImg.src = items[currentIndex];
-  imgs[currentIndex].classList.add('active');
+  imgs[currentIndex].classList.add('img-thumbnail');
   titleDOM.innerHTML = title[currentIndex];
   textDOM.innerHTML = text[currentIndex];
 });
@@ -54,7 +54,7 @@ document.getElementById('arrow-up').addEventListener('click', () => {
   const imgs = document.querySelectorAll('.carousel-img');
 
   for (let i = 0; i < imgs.length; i++) {
-    imgs[i].classList.remove('active');
+    imgs[i].classList.remove('img-thumbnail');
   }
 
   currentIndex--;
@@ -62,7 +62,7 @@ document.getElementById('arrow-up').addEventListener('click', () => {
   if (currentIndex < 0) currentIndex = imgs.length - 1;
 
   mainImg.src = items[currentIndex];
-  imgs[currentIndex].classList.add('active');
+  imgs[currentIndex].classList.add('img-thumbnail');
   titleDOM.innerHTML = title[currentIndex];
   textDOM.innerHTML = text[currentIndex];
 });
